@@ -17,10 +17,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full z-50">
         <div className="bg-zinc-900 p-6 flex justify-between items-center py-5">
             {/* LOGO*/}
-            <div className="text-2xl flex items-center gap-2 font-bold uppercase">
+            <div className="text-2xl flex items-center gap-2 ">
                 <GiBilledCap className="text-white"/>
-                <p className="text-white">Coders</p>
-                <p className="text-red-600">Gym</p>
+                <p className="text-white font-bold uppercase">Street</p>
+                <p className="text-red-600 uppercase font-bold">cap</p>
             </div>
             {/* MENU*/}
             <div className="hidden md:block">

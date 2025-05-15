@@ -11,8 +11,8 @@ const Footer =()=>{
         <div className="sm:flex sm:items-center sm:justify-between">
              <div className="text-2xl flex items-center gap-2 font-bold uppercase">
                         <GiBilledCap className="text-white"/>
-                            <p className="text-white">Coders</p>
-                            <p className="text-red-600">Gym</p>
+                            <p className="text-white">Street</p>
+                            <p className="text-red-600">Cap</p>
                         </div>
             <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                 <li>
@@ -30,7 +30,7 @@ const Footer =()=>{
             </ul>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="/" className="hover:underline">Street-Cap™</a>. All Rights Reserved.</span>
     </div>
 </footer>
 

@@ -60,7 +60,7 @@ const Home = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      Coders Gym
+      Street Cap
     </motion.h1>
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -69,7 +69,7 @@ const Home = () => {
     >
       <Link
         to="/gorras"
-        className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 rounded-full font-bold text-lg transition duration-300"
+        className="bg-red-600 hover:bg-red-900 text-white px-8 py-4 rounded-full font-bold text-lg transition duration-300"
       >
         Ver Productos
       </Link>

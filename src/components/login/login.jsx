@@ -30,12 +30,12 @@ const Login = () => {
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-md w-full rounded-xl shadow-lg p-8 border border-amber-400"
+        className="max-w-md w-full rounded-xl shadow-lg p-8 border border-red-600"
       >
         <div className="text-4xl flex justify-center items-center gap-2 font-bold uppercase p-9">
           <GiBilledCap className="text-white" />
-          <p className="text-white">Coders</p>
-          <p className="text-yellow-400">Gym</p>
+          <p className="text-white">Street</p>
+          <p className="text-red-600">Cap</p>
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -67,7 +67,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="cursor-pointer w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2.5 rounded-lg transition-colors transition-all duration-500"
+            className="cursor-pointer w-full bg-red-500 hover:bg-red-600 text-white font-medium py-2.5 rounded-lg transition-colors transition-all duration-500"
           >
             Iniciar sesión
           </button>
