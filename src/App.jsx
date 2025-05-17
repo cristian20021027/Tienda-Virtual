@@ -9,7 +9,10 @@ import Admin from "./PanelAdmin/Admin";
 import AgregarGorra from "./PanelAdmin/AgregarGorra";
 import AdminGorras from "./PanelAdmin/adminGorras";
 import GorrasPage from "./components/PageGorras/page-gorras";
-import CarritoPage from "./components/CarritoPage"; // Importa la nueva página del carrito
+import CarritoPage from "./components/CarritoPage";
+import withLoader from "./components/withloader/withloader"; // Importa la nueva página del carrito
+
+const HomeWithLoader=withLoader(Home);
 
 function App() {
   return (
@@ -17,7 +20,7 @@ function App() {
       <Routes>
         {/* Rutas públicas */}
         <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomeWithLoader />} />
           <Route path="/login" element={<Login />} />
           <Route path="/gorras" element={<GorrasPage/>}/>
           <Route path="/cart" element={<CarritoPage/>}/> {/* Nueva ruta del carrito */}

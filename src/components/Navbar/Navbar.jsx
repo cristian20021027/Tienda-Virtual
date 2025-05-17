@@ -6,8 +6,8 @@ import {MdMenu} from "react-icons/md";
 import {PiShoppingCartThin} from "react-icons/pi";
 import ResponsiveMenu from "./ResponsiveMenu";
 import { Link } from 'react-router-dom';
-import { useCart } from "../../context/context"; // Importa el hook del carrito
-
+import { useCart } from "../../context/context"; 
+import "./navbar.css"
 const Navbar = () => {
     const [open, setOpen] = React.useState(false);
     const { totalItems } = useCart(); // Obtiene el total de items del carrito
@@ -17,10 +17,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full z-50">
         <div className="bg-zinc-900 p-6 flex justify-between items-center py-5">
             {/* LOGO*/}
-            <div className="text-2xl flex items-center gap-2 ">
+            <div className="logo text-2xl flex items-center gap-2 ">
                 <GiBilledCap className="text-white"/>
-                <p className="text-white font-bold uppercase">Street</p>
-                <p className="text-red-600 uppercase font-bold">cap</p>
+                <p className="text-white">Street</p>
+                <p className="text-red-600 ">cap</p>
             </div>
             {/* MENU*/}
             <div className="hidden md:block">

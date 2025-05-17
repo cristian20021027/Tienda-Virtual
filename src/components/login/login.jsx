@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { GiBilledCap } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../../supabaseClient"; // ajusta la ruta si es necesario
+import { supabase } from "../../supabaseClient";
+import logo from "../../../public/img/logo.png" // ajusta la ruta si es necesario
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,9 +34,7 @@ const Login = () => {
         className="max-w-md w-full rounded-xl shadow-lg p-8 border border-red-600"
       >
         <div className="text-4xl flex justify-center items-center gap-2 font-bold uppercase p-9">
-          <GiBilledCap className="text-white" />
-          <p className="text-white">Street</p>
-          <p className="text-red-600">Cap</p>
+          <img src={logo} alt="" />
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -47,7 +46,7 @@ const Login = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all duration-500 text-white bg-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all duration-500 text-white bg-transparent"
               placeholder="ejemplo@email.com"
             />
           </div>
@@ -60,7 +59,7 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all duration-500 text-white bg-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all duration-500 text-white bg-transparent"
               placeholder="••••••••"
             />
           </div>

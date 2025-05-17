@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'MiFuente';
+  src: url("../Navbar/font.ttf");
+}
+.logo{
+  font-family:'MiFuente';
+}

@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'MiFuente';
+  src: url("../Navbar/font.ttf");
+}
+.loadercontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
+  font-family:"MiFuente";
+  background-color: #18181B;
+}
+
+.logocontainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.logo{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  box-shadow: #771515;
+}
+
+
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.loader {
+  width: 12em;
+  height: 1em;
+  border-radius: 8px;
+  background-color: #47a7ff44;
+}
+
+.loader div {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #8d2424;
+  animation: width7435 3s linear infinite;
+  transform-origin: left;
+}
+
+@keyframes width7435 {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

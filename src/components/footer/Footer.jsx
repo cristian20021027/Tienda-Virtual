@@ -1,5 +1,6 @@
 import React from "react";
 import { GiBilledCap } from "react-icons/gi";
+import "../Navbar/navbar.css"
 
 const Footer =()=>{
     return(
@@ -9,8 +10,8 @@ const Footer =()=>{
 <footer className="bg-white shadow-sm dark:bg-zinc-900 border-t-2 border-red-500">
     <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-             <div className="text-2xl flex items-center gap-2 font-bold uppercase">
-                        <GiBilledCap className="text-white"/>
+             <div className="logo text-2xl flex items-center gap-2 ">
+                        <GiBilledCap className="text-white "/>
                             <p className="text-white">Street</p>
                             <p className="text-red-600">Cap</p>
                         </div>
