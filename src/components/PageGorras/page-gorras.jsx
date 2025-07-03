@@ -58,6 +58,11 @@ const GorrasPage = () => {
       <h1 className="text-3xl font-bold text-center mb-8 dark:text-white">
         Nuestra Colección de Gorras
       </h1>
+      <div className="mb-6 flex justify-center">
+        <span className="bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md">
+          Por la compra de 4 o más gorras se activa el precio mayorista
+        </span>
+      </div>
       
       {/* Filtros de categoría */}
       <div className="flex flex-wrap justify-center gap-2 mb-8">

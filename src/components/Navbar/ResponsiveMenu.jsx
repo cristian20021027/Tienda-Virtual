@@ -17,7 +17,7 @@ const ResponsiveMenu = ({open}) =>{
                 <li><a href="/gorras">Gorras</a></li>
                 <li>Service</li>
                 <li>Contact</li>
-                <li><a href="/login">Login</a></li>
+                
             </ul>
         </div>
         </motion.div>

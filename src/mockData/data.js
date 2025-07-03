@@ -11,18 +11,7 @@ export const NavbarMenu =[
     },
     {
         id:3,
-        tittle:"Program",
-        link:"#"
-    },
-    {
-        id:4,
-        tittle:"blogs",
-        link:"#"
-    },
-    {
-        id:5,
-        tittle:"contact",
-        link:"#"
+        tittle:"Quienes somos",
+        link:"/quienes-somos"
     }
-    
 ]

@@ -8,6 +8,7 @@ const AdminGorras = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     precio: '',
+    precio_mayorista: '',
     imagen: '',
     categoria: '',
     calificacion: 0,
@@ -70,6 +71,7 @@ const AdminGorras = () => {
     setFormData({
       nombre: gorra.nombre,
       precio: gorra.precio,
+      precio_mayorista: gorra.precio_mayorista || '',
       imagen: gorra.imagen,
       categoria: gorra.categoria || '',
       calificacion: gorra.calificacion || 0,
@@ -178,6 +180,17 @@ const AdminGorras = () => {
                   onChange={handleChange}
                   className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
                   placeholder="Precio"
+                  required
+                  min="0"
+                  step="0.01"
+                />
+                <input
+                  name="precio_mayorista"
+                  type="number"
+                  value={formData.precio_mayorista}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+                  placeholder="Precio Mayorista"
                   required
                   min="0"
                   step="0.01"

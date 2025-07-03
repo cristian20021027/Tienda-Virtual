@@ -110,6 +110,10 @@ const ProductsCard = memo(({ products }) => {
               )}
             </div>
 
+            {product.precio_mayorista && product.precio_mayorista < product.precio && (
+              <p className="text-green-400 text-sm font-bold mb-2">Precio mayorista: {formatPrice(product.precio_mayorista)}</p>
+            )}
+
             {/* Botón con efecto urbano */}
             <motion.button 
               onClick={() => product.disponible !== false && addToCart(product)}

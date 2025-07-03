@@ -12,20 +12,23 @@ const CarritoPage = () => {
     totalPrice 
   } = useCart();
 
-  // Calcular descuento (10% si hay 3 o más gorras)
-  const discount = totalItems >= 3 ? totalPrice * 0.1 : 0;
-  const finalPrice = totalPrice - discount;
+  // Calcular subtotal y total usando precio mayorista si hay más de 4 gorras
+  const usaMayorista = totalItems >= 4;
+  const subtotal = cart.reduce((acc, item) => {
+    const precioUnitario = usaMayorista && item.precio_mayorista ? item.precio_mayorista : item.precio;
+    return acc + precioUnitario * item.quantity;
+  }, 0);
+  const finalPrice = subtotal;
 
   // Función para enviar pedido por WhatsApp
   const sendWhatsAppOrder = () => {
-    const productsText = cart.map(item => (
-      `- ${item.nombre} (x${item.quantity}): $${formatPrice(item.precio * item.quantity)}`
-    )).join('%0A');
+    const productsText = cart.map(item => {
+      const precioUnitario = usaMayorista && item.precio_mayorista ? item.precio_mayorista : item.precio;
+      return `- ${item.nombre} (x${item.quantity}): $${formatPrice(precioUnitario * item.quantity)}`;
+    }).join('%0A');
     
     const message = `¡Hola! Quiero realizar este pedido:%0A%0A` +
       `${productsText}%0A%0A` +
-      `Subtotal: $${formatPrice(totalPrice)}%0A` +
-      (discount > 0 ? `Descuento (10%): -$${formatPrice(discount)}%0A` : '') +
       `Total a pagar: $${formatPrice(finalPrice)}%0A%0A` +
       `¿Podrían confirmarme disponibilidad y forma de pago?`;
     
@@ -50,68 +53,65 @@ const CarritoPage = () => {
       ) : (
         <>
           <div className="bg-zinc-800 rounded-lg shadow-md overflow-hidden mb-6">
-            {cart.map((item) => (
-              <div key={item.id} className="p-4 border-b border-zinc-700 flex flex-col md:flex-row items-center">
-                <img 
-                  src={item.imagen} 
-                  alt={item.nombre} 
-                  className="w-20 h-20 object-cover rounded mb-4 md:mb-0"
-                />
-                <div className="md:ml-4 flex-grow text-center md:text-left">
-                  <h3 className="font-medium text-white">{item.nombre}</h3>
-                  <p className="text-red-400 font-bold">${formatPrice(item.precio)}</p>
+            {cart.map((item) => {
+              const precioUnitario = usaMayorista && item.precio_mayorista ? item.precio_mayorista : item.precio;
+              return (
+                <div key={item.id} className="p-4 border-b border-zinc-700 flex flex-col md:flex-row items-center">
+                  <img 
+                    src={item.imagen} 
+                    alt={item.nombre} 
+                    className="w-20 h-20 object-cover rounded mb-4 md:mb-0"
+                  />
+                  <div className="md:ml-4 flex-grow text-center md:text-left">
+                    <h3 className="font-medium text-white">{item.nombre}</h3>
+                    <p className="font-bold">
+                      {usaMayorista && item.precio_mayorista && item.precio_mayorista < item.precio ? (
+                        <>
+                          <span className="text-red-400 line-through mr-2">${formatPrice(item.precio)}</span>
+                          <span className="text-green-400">${formatPrice(item.precio_mayorista)} <span className="text-xs">(Mayorista)</span></span>
+                        </>
+                      ) : (
+                        <span className="text-red-400">${formatPrice(item.precio)}</span>
+                      )}
+                    </p>
+                  </div>
+                  <div className="flex items-center mt-4 md:mt-0">
+                    <button 
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      className="cursor-pointer px-3 py-1 bg-zinc-700 text-white rounded-l hover:bg-red-600"
+                    >
+                      -
+                    </button>
+                    <span className="px-3 py-1 bg-zinc-600 text-white">
+                      {item.quantity}
+                    </span>
+                    <button 
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      className="cursor-pointer px-3 py-1 bg-zinc-700 text-white rounded-r hover:bg-green-600"
+                    >
+                      +
+                    </button>
+                    <button 
+                      onClick={() => removeFromCart(item.id)}
+                      className="bg-red-600 rounded cursor-pointer ml-4 text-white hover:bg-red-900 px-2 py-2   transition-all ease-in-out duration-500 scale-110 font-bold text-sm"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
                 </div>
-                <div className="flex items-center mt-4 md:mt-0">
-                  <button 
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    className="cursor-pointer px-3 py-1 bg-zinc-700 text-white rounded-l hover:bg-red-600"
-                  >
-                    -
-                  </button>
-                  <span className="px-3 py-1 bg-zinc-600 text-white">
-                    {item.quantity}
-                  </span>
-                  <button 
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    className="cursor-pointer px-3 py-1 bg-zinc-700 text-white rounded-r hover:bg-green-600"
-                  >
-                    +
-                  </button>
-                  <button 
-                    onClick={() => removeFromCart(item.id)}
-                    className="bg-red-600 rounded cursor-pointer ml-4 text-white hover:bg-red-900 px-2 py-2   transition-all ease-in-out duration-500 scale-110 font-bold text-sm"
-                  >
-                    Eliminar
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           
           <div className="bg-zinc-800 rounded-lg shadow-md p-6">
             <div className="space-y-2 mb-4">
               <div className="flex justify-between">
-                <span className="text-white">Subtotal:</span>
-                <span className="text-white">${formatPrice(totalPrice)}</span>
+                <span className="text-white">Total:</span>
+                <span className="text-white">${formatPrice(finalPrice)}</span>
               </div>
-              
-              {discount > 0 && (
-                <div className="flex justify-between">
-                  <span className="text-white">Descuento (10%):</span>
-                  <span className="text-green-400">-${formatPrice(discount)}</span>
-                </div>
-              )}
-              
-              <div className="flex justify-between border-t border-zinc-700 pt-2">
-                <span className="text-xl font-bold text-white">Total:</span>
-                <span className="text-xl font-bold text-green-500">
-                  ${formatPrice(finalPrice)}
-                </span>
-              </div>
-              
-              {totalItems >= 3 && (
+              {usaMayorista && (
                 <p className="text-green-400 text-sm mt-2">
-                  ¡Descuento del 10% aplicado por llevar 3 o más gorras!
+                  ¡Precio mayorista aplicado por llevar más de 4 gorras!
                 </p>
               )}
             </div>

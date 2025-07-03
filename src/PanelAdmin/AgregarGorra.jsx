@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const AgregarGorra = () => {
   const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState("");
+  const [precioMayorista, setPrecioMayorista] = useState("");
   const [imagen, setImagen] = useState(null);
   const [mensaje, setMensaje] = useState("");
   const [cargando, setCargando] = useState(false);
@@ -42,6 +43,7 @@ const AgregarGorra = () => {
         .insert([{
           nombre,
           precio: parseFloat(precio),
+          precio_mayorista: parseFloat(precioMayorista),
           imagen: publicUrl,
           categoria,
           disponible,
@@ -89,6 +91,19 @@ const AgregarGorra = () => {
         </div>
 
         <div>
+          <label className="block text-gray-700">Precio Mayorista:</label>
+          <input
+            type="number"
+            value={precioMayorista}
+            onChange={(e) => setPrecioMayorista(e.target.value)}
+            min="0"
+            step="0.01"
+            className="w-full border px-4 py-2 rounded focus:outline-none focus:ring focus:border-blue-300"
+            required
+          />
+        </div>
+
+        <div>
           <label className="block text-gray-700">Categoría:</label>
           <select
             value={categoria}
@@ -99,7 +114,7 @@ const AgregarGorra = () => {
             <option value="">Selecciona una categoría</option>
             <option value="plana">Plana</option>
             <option value="normal">Normal</option>
-            <option value="exclusiva">Exclusiva</option>
+            <option value="prueba">Pruea</option>
           </select>
         </div>
 

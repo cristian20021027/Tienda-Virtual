@@ -11,6 +11,7 @@ import AdminGorras from "./PanelAdmin/adminGorras";
 import GorrasPage from "./components/PageGorras/page-gorras";
 import CarritoPage from "./components/CarritoPage";
 import withLoader from "./components/withloader/withloader"; // Importa la nueva página del carrito
+import About from "./components/sobrenosotros/about";
 
 const HomeWithLoader=withLoader(Home);
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/gorras" element={<GorrasPage/>}/>
           <Route path="/cart" element={<CarritoPage/>}/> {/* Nueva ruta del carrito */}
+          <Route path="/quienes-somos" element={<About />} />
         </Route>
 
         {/* Rutas admin */}

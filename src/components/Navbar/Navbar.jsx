@@ -47,12 +47,7 @@ const Navbar = () => {
                         </span>
                     )}
                 </Link>
-                <Link 
-                    to="/login" 
-                    className="hover:bg-red-600 text-white font-semibold hover:text-white rounded-md border-2 border-red-600 duration-300 py-2 px-6 hidden md:block"
-                >
-                    Login
-                </Link>
+                
             </div>
             {/* MOBILE */}
             <div className="md:hidden" onClick={()=> setOpen(!open)}>
