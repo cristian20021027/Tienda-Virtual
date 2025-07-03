@@ -112,9 +112,8 @@ const AgregarGorra = () => {
             required
           >
             <option value="">Selecciona una categoría</option>
-            <option value="plana">Plana</option>
-            <option value="normal">Normal</option>
-            <option value="prueba">Pruea</option>
+            <option value="Lacoste">Lacoste</option>
+            <option value="Beisbolera">Beisbolera</option>
           </select>
         </div>
 
