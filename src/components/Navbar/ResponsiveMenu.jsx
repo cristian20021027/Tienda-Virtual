@@ -15,8 +15,7 @@ const ResponsiveMenu = ({open}) =>{
             <ul className="flex flex-col justify-center items-center gap-10">
                 <li><a href="/">home</a></li>
                 <li><a href="/gorras">Gorras</a></li>
-                <li>Service</li>
-                <li>Contact</li>
+                <li><a href="/quienes-somos">Quienes somos</a></li>
                 
             </ul>
         </div>
